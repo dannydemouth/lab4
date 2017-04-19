@@ -26,6 +26,7 @@ import pkgPokerEnum.eAction;
 import pkgPokerEnum.eGame;
 import pkgPokerBLL.Action;
 import pkgPokerBLL.GamePlay;
+import pkgPokerBLL.Player;
 import pkgPokerBLL.Table;
 
 public class PokerTableController implements Initializable {
@@ -181,14 +182,33 @@ public class PokerTableController implements Initializable {
 	//TODO: Lab #4 Complete the implementation
 	public void Handle_TableState(Table HubPokerTable) {
 		
-		getPlayerLabel(1).setText("");
-		getPlayerLabel(2).setText("");
+		getPlayerLabel(1).setText("Open Seat");
+		getPlayerLabel(2).setText("Open Seat");
 		getSitLeave(1).setVisible(true);
 		getSitLeave(2).setVisible(true);
 		getSitLeave(1).setText("Sit");
 		getSitLeave(2).setText("Sit");
 		
-		
+		Iterator iter = HubPokerTable.getHmPlayer.entrySet.iterator();
+		while (iter.hasNext()){
+			Map.Entry pair = (Map.Entry) iter.next();
+			Player pers = (Player) pair.getValue();
+			
+			getPlayerLabel(pers.getiPlayerPosition()).setText(pers.getPlayerName());
+			
+			if (pers.getiPokerClientID() == mainApp.getPlayer().getiPokerClientID()){
+				getSitLeave(pers.getiPlayerPosition()).setVisible(true);
+				getSitLeave(pers.getiPlayerPosition()).setText("Leave");
+				
+				for (int x = 1; x < 3; a++){
+					if (x != pers.getiPlayerPosition())
+						getSitLeave(x).setVisible(false);
+				}
+			}
+			else { 
+				getSitLeave(pers.getiPlayerPosition()).setVisible(true);
+			}
+		}
 		
 	}
 

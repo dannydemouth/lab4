@@ -11,6 +11,13 @@ public class Table implements Serializable {
 	// Change this from ArrayList to HashMap.
 	private HashMap<UUID, Player> TablePlayers = new HashMap<UUID, Player>();
 
+	public Object getHmPlayer;
+
+	public Player getPlayer(UUID key){
+		Player p = TablePlayers.get(key);
+		return p;
+	}
+
 	public Table() {
 		super();
 		TableID = UUID.randomUUID();
