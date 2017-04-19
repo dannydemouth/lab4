@@ -22,7 +22,6 @@ import pkgPokerBLL.Table;
 import pkgPokerEnum.eAction;
 import pkgPokerEnum.eCardDestination;
 import pkgPokerEnum.eDrawCount;
-import pokerEnums.eGame;
 import pkgPokerEnum.eGameState;
 
 public class PokerHub extends Hub {

@@ -15,7 +15,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 import pkgPoker.app.MainApp;
-import pokerBase.Action;
 import pkgPokerEnum.eAction;
 
 public class ClientServerStartController implements Initializable {

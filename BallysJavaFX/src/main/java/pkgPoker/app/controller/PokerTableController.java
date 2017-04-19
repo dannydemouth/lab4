@@ -101,19 +101,35 @@ public class PokerTableController implements Initializable {
 	public void GetGameState() {
 	}
 
-	//TODO: Lab #4 - Complete (fix) setiPlayerPosition
 	public void btnSitLeave_Click(ActionEvent event) {
 
 		ToggleButton btn = (ToggleButton)event.getSource();
-		
+		eAction eAc = null;
 		
 		// Set the PlayerPosition in the Player
-		if (btn == btnPos1SitLeave)
-			mainApp.getPlayer().setiPlayerPosition(1);
+		if (btn.getText().equals("Sit")){
+			eAc = eAction.Sit;
+		}else if(btn.getText().equals("Leave")){
+			eAc = eAction.Leave;
+		}
 		
-		if (btn == btnPos2SitLeave)
-			mainApp.getPlayer().setiPlayerPosition(2);
-
+		switch (btn.getId()){
+		case "btnPos1SitLeave":
+			if(eAc == eAction.Sit){
+				mainApp.getPlayer().setiPlayerPosition(1);
+			}else{
+				mainApp.getPlayer().setiPlayerPosition(0);
+			}
+			break;
+			
+		case "btnPos2SitLeave":
+			if(eAc == eAction.Sit){
+				mainApp.getPlayer().setiPlayerPosition(2);
+			}else{
+				mainApp.getPlayer().setiPlayerPosition(0);
+			}
+			break;
+		}
 		// Build an Action message
 		Action act = new Action(eAction.Sit, mainApp.getPlayer());
 
@@ -164,7 +180,16 @@ public class PokerTableController implements Initializable {
 
 	//TODO: Lab #4 Complete the implementation
 	public void Handle_TableState(Table HubPokerTable) {
-
+		
+		getPlayerLabel(1).setText("");
+		getPlayerLabel(2).setText("");
+		getSitLeave(1).setVisible(true);
+		getSitLeave(2).setVisible(true);
+		getSitLeave(1).setText("Sit");
+		getSitLeave(2).setText("Sit");
+		
+		
+		
 	}
 
 	public void Handle_GameState(GamePlay HubPokerGame) {

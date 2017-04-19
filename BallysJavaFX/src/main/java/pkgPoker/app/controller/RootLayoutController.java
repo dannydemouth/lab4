@@ -20,7 +20,6 @@ import javafx.scene.control.RadioMenuItem;
 import javafx.scene.control.ToggleGroup;
 import javafx.stage.FileChooser;
 import pkgPoker.app.MainApp;
-import pokerBase.Card;
 import pkgPokerEnum.eGame;
 import pkgPokerEnum.eRank;
 import pkgPokerEnum.eSuit;
